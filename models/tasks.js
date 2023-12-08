@@ -9,20 +9,21 @@ let taskSchema = mongoose.Schema({
          type: String,
          default:""
     },
-    date:{
+    due_date:{
          type: Date,
-         required: true,
+         default: Date.now,
     },
     status:{
          type: String,
          default: "Pending",
          enum: ['Pending', 'In Progress', 'Completed'],
     },
-    author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User' // Reference to the User model
-      }
+    author:{
+           type: mongoose.Schema.Types.ObjectId,
+           ref: 'User',
+           required: true,
+    }
    }
 );
 
-module.exports = mongoose.model("User", taskSchema);
+module.exports = mongoose.model("Tasks", taskSchema);
