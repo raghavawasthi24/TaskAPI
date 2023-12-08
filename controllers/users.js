@@ -1,5 +1,5 @@
 require("dotenv").config();
-const User = require("../models/user");
+const User = require("../models/users");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const multer = require('multer');
@@ -21,7 +21,7 @@ const loginUser = async (req, res) => {
       httpOnly: false,
     });
     if (password == user.password) {
-      res.status(200).json({ msg: "Logeed in", jwt_token: cookie_token });
+      res.status(200).json({ msg: "Logeed in",id:user._id, jwt_token: cookie_token });
     } else {
       res.status(200).json({ msg: "password not matched" });
     }
