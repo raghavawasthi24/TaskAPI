@@ -10,11 +10,12 @@ router.post("/login", loginUser);
 router.post("/register", registerUser);
 
 //Routes for slots
-router.post("/createTask",createTask);
-router.get("/getTask/:id",getTask);
-router.get("/allTask/:user_id",allTask);
-router.patch("/updateTask/:id",updateTask);
-router.delete("/deleteTask/:id",deleteTask);
+//All below API's requires token to be passed in header
+router.post("/createTask",auth,createTask);
+router.get("/getTask/:id",auth,getTask);
+router.get("/allTask/:user_id",auth,allTask);
+router.patch("/updateTask/:id",auth,updateTask);
+router.delete("/deleteTask/:id",auth,deleteTask);
 
 
 module.exports = router;
